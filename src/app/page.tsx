@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import "xp.css/dist/xp.css";
+// import "xp.css/dist/xp.css";
 
 export default function Home() {
   const [count, setCount] = React.useState(0);
