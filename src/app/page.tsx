@@ -23,6 +23,7 @@ export default function Home() {
               <Tab>実質HP倍率計算</Tab>
               <Tab>割合ダメージ耐久チェッカー</Tab>
               <Tab>Coming soon...</Tab>
+              <Tab>このサイトについて</Tab>
             </TabList>
 
             <TabPanel>
@@ -32,11 +33,11 @@ export default function Home() {
               <Gravity />
             </TabPanel>
             <TabPanel>
-              <p>実装予定の機能</p>
-              <ul style={{ listStyleType: "disc" }}>
-                <li>実質HP計算</li>
-                <li>ダメージ耐久チェッカー</li>
-              </ul>
+              <p>工事中…</p>
+            </TabPanel>
+            <TabPanel>
+              <p><a href="https://github.com/Poyotoron/SSNOSN">GitHub</a></p>
+              <p><a href="https://twitter.com/PyTr_N">作者Twitter</a></p>
             </TabPanel>
           </Tabs>
         </div>
