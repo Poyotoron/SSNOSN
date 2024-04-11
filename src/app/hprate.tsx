@@ -1,13 +1,13 @@
 import React, { use, useEffect } from "react";
 
 export default function HPRate() {
-    const [LeaderHP, setLeaderHP] = React.useState(1);
-    const [FriendHP, setFriendHP] = React.useState(1);
-    const [LeaderReduce, setLeaderReduce] = React.useState([0, 0]);
-    const [FriendReduce, setFriendReduce] = React.useState([0, 0]);
-    const [TotalAllHPRate, setTotalAllHPRate] = React.useState(1);
-    const [TotalHPRate, setTotalHPRate] = React.useState(1);
-    const [TotalReduceRate, setTotalReduceRate] = React.useState(0);
+    const [leaderHP, setLeaderHP] = React.useState(1);
+    const [friendHP, setFriendHP] = React.useState(1);
+    const [leaderReduce, setLeaderReduce] = React.useState([0, 0]);
+    const [friendReduce, setFriendReduce] = React.useState([0, 0]);
+    const [totalAllHPRate, setTotalAllHPRate] = React.useState(1);
+    const [totalHPRate, setTotalHPRate] = React.useState(1);
+    const [totalReduceRate, setTotalReduceRate] = React.useState(0);
 
     function numberRound(num: number, digit: number) {
         return Math.round(num * Math.pow(10, digit)) / Math.pow(10, digit);
@@ -16,15 +16,15 @@ export default function HPRate() {
     function calcTotalAllHPRate() {
         calcTotalHPRate();
         calcTotalReduceRate();
-        setTotalAllHPRate(numberRound(TotalHPRate * (100 / (100 - TotalReduceRate)), 4));
+        setTotalAllHPRate(numberRound(totalHPRate * (100 / (100 - totalReduceRate)), 4));
     }
 
     function calcTotalHPRate() {
-        setTotalHPRate(LeaderHP * FriendHP);
+        setTotalHPRate(leaderHP * friendHP);
     }
 
     function calcTotalReduceRate() {
-        setTotalReduceRate(100 - (1 - LeaderReduce[0] / 100) * (1 - LeaderReduce[1] / 100) * (1 - FriendReduce[0] / 100) * (1 - FriendReduce[1] / 100) * 100);
+        setTotalReduceRate(100 - (1 - leaderReduce[0] / 100) * (1 - leaderReduce[1] / 100) * (1 - friendReduce[0] / 100) * (1 - friendReduce[1] / 100) * 100);
     }
 
     useEffect(() => {
@@ -36,25 +36,25 @@ export default function HPRate() {
             <h3>リーダースキル</h3>
             <h4>リーダー</h4>
             <p>HP倍率</p>
-            <input type="number" value={LeaderHP} onChange={(e) => setLeaderHP(Number(e.target.value))} />
+            <input type="number" value={leaderHP} onChange={(e) => setLeaderHP(Number(e.target.value))} />
             <p>ダメージ軽減率1</p>
-            <input type="number" value={LeaderReduce[0]} onChange={(e) => setLeaderReduce([Number(e.target.value), LeaderReduce[1]])} />%
+            <input value={leaderReduce[0]} onChange={(e) => setLeaderReduce([Number(e.target.value), leaderReduce[1]])} />%
             <p>ダメージ軽減率2</p>
-            <input type="number" value={LeaderReduce[1]} onChange={(e) => setLeaderReduce([LeaderReduce[0], Number(e.target.value)])} />%
+            <input value={leaderReduce[1]} onChange={(e) => setLeaderReduce([leaderReduce[0], Number(e.target.value)])} />%
             <h4>フレンド</h4>
             <p>HP倍率</p>
-            <input type="number" value={FriendHP} onChange={(e) => setFriendHP(Number(e.target.value))} />
+            <input type="number" value={friendHP} onChange={(e) => setFriendHP(Number(e.target.value))} />
             <p>ダメージ軽減率1</p>
-            <input type="number" value={FriendReduce[0]} onChange={(e) => setFriendReduce([Number(e.target.value), FriendReduce[1]])} />%
+            <input value={friendReduce[0]} onChange={(e) => setFriendReduce([Number(e.target.value), friendReduce[1]])} />%
             <p>ダメージ軽減率2</p>
-            <input type="number" value={FriendReduce[1]} onChange={(e) => setFriendReduce([FriendReduce[0], Number(e.target.value)])} />%
+            <input value={friendReduce[1]} onChange={(e) => setFriendReduce([friendReduce[0], Number(e.target.value)])} />%
             <h3>合計</h3>
             <h4>実質HP倍率</h4>
-            <p>{TotalAllHPRate}</p>
+            <p>{totalAllHPRate}</p>
             <h4>HP倍率</h4>
-            <p>{TotalHPRate}</p>
+            <p>{totalHPRate}</p>
             <h4>軽減率</h4>
-            <p>{TotalReduceRate}%</p>
+            <p>{totalReduceRate}%</p>
         </div>
     );
 }
