@@ -6,6 +6,7 @@ import "xp.css/dist/XP.css";
 import 'react-tabs/style/react-tabs.css';
 
 import HPRate from "./hprate";
+import Gravity from "./gravity";
 
 export default function Home() {
   return (
@@ -20,11 +21,15 @@ export default function Home() {
           <Tabs>
             <TabList>
               <Tab>実質HP倍率計算</Tab>
+              <Tab>割合ダメージ耐久チェッカー</Tab>
               <Tab>Coming soon...</Tab>
             </TabList>
 
             <TabPanel>
               <HPRate />
+            </TabPanel>
+            <TabPanel>
+              <Gravity />
             </TabPanel>
             <TabPanel>
               <p>実装予定の機能</p>
